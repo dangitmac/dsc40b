@@ -67,8 +67,8 @@ def minimize_ell_sorted(data, colors):
         if color == 'blue':
             blue_greater_than_theta += 1
 
-    best_theta = data[0]
-    best_loss = red_less_than_or_equal_theta + blue_greater_than_theta
+    best_theta = None
+    best_loss = None
 
     for index in range(len(data)):
         current_theta = data[index]
@@ -85,7 +85,7 @@ def minimize_ell_sorted(data, colors):
             + blue_greater_than_theta
         )
 
-        if current_loss < best_loss:
+        if best_loss is None or current_loss < best_loss:
             best_loss = current_loss
             best_theta = current_theta
 
